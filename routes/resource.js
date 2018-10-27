@@ -3,7 +3,7 @@ const controller = require('../controllers/resource')
 const router = Router()
 
 // C
-router.post('/', contoller.create)
+router.post('/', controller.create)
 // R
 router.get('/', controller.getAll)
 router.get('/:id', controller.getOne)

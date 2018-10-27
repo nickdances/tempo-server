@@ -1,6 +1,6 @@
 const model = require('../models/resource')
 
-module.exports {
+module.exports = {
 	// C
 	create(req, res, next) {
 		return model.create(req.params.id)
@@ -32,7 +32,7 @@ module.exports {
 		}))
 	},
 
-	update(res, res, next) {
+	update(req, res, next) {
 		return model.update(req.params.id, req.body)
 		.then(updated => res.status(202).json(updated))
 		.catch(e => next({
