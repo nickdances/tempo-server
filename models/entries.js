@@ -33,10 +33,10 @@ function transform(entries) {
         let month = entry.date.getMonth() + 1
         transformed[month] = transformed[month] || []
         transformed[month].push({
-            id: entry.id, 
+            id: +entry.id, 
             flow: entry.flow,
-            day: entry.date.getDate(),
-            temp: entry.temp
+            day: +entry.date.getDate(),
+            temp: +entry.temp
         })
     })
     return transformed
