@@ -6,6 +6,12 @@ module.exports = {
         .select('id', 'date', 'temp', 'flow')
         .where('user_id', uid)
         .then(entries => transform(entries))
+    },
+    create(uid, body) {
+        return knex('entries')
+        .where('user_id', uid)
+        .insert(body)
+        .returning('id')
     }
 }
 
