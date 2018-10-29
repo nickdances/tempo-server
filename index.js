@@ -10,4 +10,13 @@ app.use(cors())
 app.use(express.json())
 app.use('/entries', entriesRouter)
 
+
+app.use((res, res, next) => {
+    let err = {status: 404, message: 'no routes found'}
+    return next(err)
+})
+
+app.use((err, req, res, next) => {
+    return res.status(err.status || 500).json(err || {message: 'something bad happened'})
+})
 app.listen(port, () => console.log(`listening on ${port}`))
