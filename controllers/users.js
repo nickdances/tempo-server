@@ -2,14 +2,16 @@ const model = require('../models/users')
 const entriesModel = require('../models/entries')
 module.exports = {
     getOne(req, res, next) {
-        let uid
+        let id
+        let name
         let { email, password } = req.query
         return model.getOne(email, password)
-        .then(id => {
-            uid = id[0].id
-            return entriesModel.getAll(id[0].id)
+        .then(user => {
+            id = user[0].id
+            name = user[0].name
+            return entriesModel.getAll(id)
         })
-        .then(entries => res.status(201).json(Object.assign({ id: uid} , entries)))
+        .then(entries => res.status(201).json(Object.assign({ id, name, entries })))
         .catch(e => next({
 			status: 404, 
 			message: 'User not found',
