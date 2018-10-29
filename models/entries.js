@@ -12,6 +12,12 @@ module.exports = {
         return knex('entries')
         .insert(entry)
         .returning('id')
+    },
+    update(id, body) {
+        return knex('entries')
+        .where('id', id)
+        .update(body)
+        .returning('id')
     }
 }
 
