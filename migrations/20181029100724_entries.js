@@ -5,9 +5,9 @@ exports.up = function(knex, Promise) {
         table.timestamps(true, true)
         table.timestamp('date').notNullable()
         table.boolean('flow')
-        table.integer('temp').unsigned()
+        table.decimal('temp')
         table.integer('user_id').notNullable()
-        table.foreign('user_id').references('id').inTable('users') 
+        table.foreign('user_id').onDelete('CASCADE').references('id').inTable('users') 
     })
 }
 
