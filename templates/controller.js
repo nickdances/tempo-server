@@ -25,7 +25,7 @@ module.exports = {
 	getOne(req, res, next) { 
 		return model.getOne(req.params.id)
 		.then(resource => res.status(202).json(resource))
-		.catch(next({
+		.catch(e => next({
 			status: 404, 
 			message: 'Resource not found',
 			caught: e,
