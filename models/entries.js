@@ -35,7 +35,8 @@ function transform(entries) {
         transformed[month].push({
             id: entry.id, 
             flow: entry.flow,
-            day: entry.date.getDate() 
+            day: entry.date.getDate(),
+            temp: entry.temp
         })
     })
     return transformed
