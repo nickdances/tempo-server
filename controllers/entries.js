@@ -46,5 +46,14 @@ module.exports = {
 			message: 'Failed to update entry',
 			caught: e,
         }))
+    },
+    delete(req, res, next) {
+        return model.delete(req.params.entry_id)
+        .then(id => res.status(202).json(id[0]))
+        .catch(e => next({
+			status: 422, 
+			message: 'Failed to delete entry',
+			caught: e,
+        }))
     }
 }
