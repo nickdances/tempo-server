@@ -10,5 +10,11 @@ module.exports = {
         return knex('users')
         .insert(body)
         .returning('id')
+    },
+    delete(id) {
+        return knex('users')
+        .where('id', id)
+        .del()
+        .returning('id')
     }
 }

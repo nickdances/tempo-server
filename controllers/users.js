@@ -5,6 +5,7 @@ module.exports = {
         let id
         let name
         let { email, password } = req.query
+        
         return model.getOne(email, password)
         .then(user => {
             id = user[0].id
@@ -24,7 +25,16 @@ module.exports = {
         .then(id => res.status(201).json({ id: id[0] }))
         .catch(e => next({
 			status: 422, 
-			message: 'Failed to create entry',
+			message: 'Failed to create user',
+			caught: e,
+        }))
+    },
+    delete(req, res, next) {
+        return model.delete(req.params.user_id)
+        .then(id => res.status(201).json({id: id[0]}))
+        .catch(e => next({
+			status: 422, 
+			message: 'Failed to delete user',
 			caught: e,
         }))
     }
