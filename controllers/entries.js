@@ -23,7 +23,7 @@ module.exports = {
         temp = +temp
 
         return model.create(user, {flow, date, temp})
-        .then(id => res.status(201).json(id[0]))
+        .then(id => res.status(201).json({id: id[0]}))
         .catch(e => next({
 			status: 422, 
 			message: 'Failed to create entry',
@@ -40,7 +40,7 @@ module.exports = {
         }
 
         return model.update(entry_id, { flow, date, temp })
-        .then(id => res.status(202).json(id[0]))
+        .then(id => res.status(202).json({id: id[0]}))
         .catch(e => next({
 			status: 422, 
 			message: 'Failed to update entry',
@@ -49,7 +49,7 @@ module.exports = {
     },
     delete(req, res, next) {
         return model.delete(req.params.entry_id)
-        .then(id => res.status(202).json(id[0]))
+        .then(id => res.status(202).json({ id: id[0]}))
         .catch(e => next({
 			status: 422, 
 			message: 'Failed to delete entry',
