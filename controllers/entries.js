@@ -21,7 +21,7 @@ module.exports = {
         }
 
         return model.create(user, {flow, date, temp})
-        .then(id => res.status(204).json(id[0]))
+        .then(id => res.status(201).json(id[0]))
         .catch(e => next({
 			status: 422, 
 			message: 'Failed to create entry',

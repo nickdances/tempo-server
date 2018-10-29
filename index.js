@@ -11,7 +11,7 @@ app.use(express.json())
 app.use('/entries', entriesRouter)
 
 
-app.use((res, res, next) => {
+app.use((req, res, next) => {
     let err = {status: 404, message: 'no routes found'}
     return next(err)
 })

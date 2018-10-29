@@ -8,9 +8,9 @@ module.exports = {
         .then(entries => transform(entries))
     },
     create(uid, body) {
+        let entry = Object.assign({user_id: uid}, body)
         return knex('entries')
-        .where('user_id', uid)
-        .insert(body)
+        .insert(entry)
         .returning('id')
     }
 }
