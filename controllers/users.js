@@ -22,7 +22,7 @@ module.exports = {
     create(req, res, next) {
         let {email, name, password, cycle_length} = req.body
         return model.create({email, name, password, cycle_length})
-        .then(id => res.status(201).json({ id: id[0] }))
+        .then(user => res.status(201).json({ id: user[0] }))
         .catch(e => next({
 			status: 422, 
 			message: 'Failed to create user',
@@ -31,10 +31,20 @@ module.exports = {
     },
     delete(req, res, next) {
         return model.delete(req.params.user_id)
-        .then(id => res.status(201).json({id: id[0]}))
+        .then(user => res.status(201).json({id: user[0]}))
         .catch(e => next({
 			status: 422, 
 			message: 'Failed to delete user',
+			caught: e,
+        }))
+    },
+    update(req, res, next) {
+        let { email, name, password, cycle_length } = req.body
+        return model.update(req.params.user_id, { email, name, password, cycle_length })
+        .then(user => res.status(201).json({ id: user[0] }))
+        .catch(e => next({
+			status: 422, 
+			message: 'Failed to update user',
 			caught: e,
         }))
     }
