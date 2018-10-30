@@ -21,7 +21,10 @@ module.exports = {
             }))
     },
     checkPassword(req, res, next) {
-        if (!req.query.password || !req.query.email) return next()
+        if (!req.query.password || !req.query.email) return next({
+            status: 422, 
+            message: 'Email and password required'
+        })
         
         userModel.getOne(req.query.email)
         .then(user => {
