@@ -24,13 +24,12 @@
     "cors": "^2.8.4",
     "express": "^4.16.4",
     "knex": "^0.15.2",
-    "node-pre-gyp": "^0.11.0",
     "pg": "^7.6.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.5"
   },
   "engines": {
-    "node": "8.12.0"
+    "node": "10.x"
   }
 }
