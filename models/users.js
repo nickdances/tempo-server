@@ -16,5 +16,11 @@ module.exports = {
         .where('id', id)
         .del()
         .returning('id')
+    },
+    update(id, body) {
+        return knex('users')
+        .where('id', id)
+        .update(body)
+        .returning('id')
     }
 }
