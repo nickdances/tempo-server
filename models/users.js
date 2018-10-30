@@ -1,10 +1,10 @@
 const knex = require('../knex')
 
 module.exports = {
-    getOne(email, password) {
+    getOne(email) {
         return knex('users')
-        .select('id', 'name')
-        .where({email, password})
+        .select('id', 'name', 'password')
+        .where('email', email)
     },
     create(body) {
         return knex('users')
