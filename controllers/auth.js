@@ -38,6 +38,11 @@ module.exports = {
                 return next()
             }
         })
+        .catch(e => next({
+            caught: e,
+            status: 404,
+            message: 'User not found'
+        }))
     }
 
 }
