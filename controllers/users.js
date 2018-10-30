@@ -2,16 +2,9 @@ const model = require('../models/users')
 const entriesModel = require('../models/entries')
 module.exports = {
     getOne(req, res, next) {
-        let id
-        let name
-        let { email, password } = req.query
-        
-        return model.getOne(email, password)
-        .then(user => {
-            id = user[0].id
-            name = user[0].name
-            return entriesModel.getAll(id)
-        })
+        let { name, id } = req.user
+
+        return entriesModel.getAll(id)
         .then(entries => res.status(201).json(Object.assign({ id, name, entries })))
         .catch(e => next({
 			status: 404, 
@@ -20,7 +13,9 @@ module.exports = {
         }))
     },
     create(req, res, next) {
-        let {email, name, password, cycle_length} = req.body
+        let {email, name, cycle_length} = req.body
+        let password = req.hashedPassword
+
         return model.create({email, name, password, cycle_length})
         .then(user => res.status(201).json({ id: user[0] }))
         .catch(e => next({
@@ -39,7 +34,8 @@ module.exports = {
         }))
     },
     update(req, res, next) {
-        let { email, name, password, cycle_length } = req.body
+        let { email, name, cycle_length } = req.body
+        let password = req.hashedPassword
         return model.update(req.params.user_id, { email, name, password, cycle_length })
         .then(user => res.status(201).json({ id: user[0] }))
         .catch(e => next({
