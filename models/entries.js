@@ -34,7 +34,7 @@ function transform(entries) {
             id: +entry.id, 
             flow: entry.flow,
             day: +entry.date.getDate(),
-            month: entry.date.getMonth() + 1,
+            month: entry.date.getMonth(),
             temp: +entry.temp
         })
     }
