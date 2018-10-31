@@ -2,10 +2,10 @@ const model = require('../models/users')
 const entriesModel = require('../models/entries')
 module.exports = {
     getOne(req, res, next) {
-        let { name, id } = req.user
+        let { name, id, cycle_length } = req.user
 
         return entriesModel.getAll(id)
-        .then(entries => res.status(201).json(Object.assign({ id, name, entries })))
+        .then(entries => res.status(201).json({ id, name, cycle_length, entries }))
         .catch(e => next({
 			status: 404, 
 			message: 'User not found',

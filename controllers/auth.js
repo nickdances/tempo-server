@@ -28,7 +28,7 @@ module.exports = {
         
         userModel.getOne(req.query.email)
         .then(user => {
-            req.user = { id: user[0].id, name: user[0].name }
+            req.user = { id: user[0].id, name: user[0].name, cycle_length: user[0].cycle_length }
             return bcrypt.compare(req.query.password, user[0].password)
         })
         .then(isMatch => {
