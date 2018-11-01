@@ -15,6 +15,7 @@ module.exports = {
     create(req, res, next) {
         let {email, name, cycle_length} = req.body
         let password = req.hashedPassword
+        if (!cycle_length) cycle_length = 28
 
         return model.create({email, name, password, cycle_length})
         .then(user => res.status(201).json({ id: user[0] }))
