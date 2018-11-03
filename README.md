@@ -2,7 +2,9 @@
 
 ## INSTALL
 
-git clone https://www.github.com/nicholasgriffen/shark-week.git
-cd shark-week
-npm install
+git clone https://www.github.com/nicholasgriffen/tempo-server.git    
+cd tempo-server    
+npm install    
+
+## RUN 
 node index.js
