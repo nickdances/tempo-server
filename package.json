@@ -26,9 +26,6 @@
     "knex": "^0.15.2",
     "pg": "^7.6.0"
   },
-  "devDependencies": {
-    "nodemon": "^1.18.5"
-  },
   "engines": {
     "node": "10.x"
   }
