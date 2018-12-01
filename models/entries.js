@@ -3,7 +3,7 @@
  * */
 const knex = require('../knex')
 
-/** Object representing one user's data for one day
+/** Object representing one {@link module:models/users~User|user's} data for one day
  *  @typedef {Object} Entry
     @property {boolean} flow - User report of menstruation
     @property {number} day
