@@ -12,7 +12,7 @@ const knex = require('../knex')
     @property {number} temp - User Basal Body Temperature
  */
 module.exports = {
-    /** getAll  
+    /** getAll - query database for all entries for one user
      * @param {number} uid - User ID, foreign key in Entries database table
      * @returns {Array<Entry>}  
     */
@@ -22,7 +22,7 @@ module.exports = {
         .where('user_id', uid)
         .then(entries => transform(entries))
     },
-    /** create 
+    /** create - create one database entry for one User
      * @param {number} uid - User ID, foreign key in Entries database table
      * @param {Object} body 
      * @returns {number}  - Created Entry ID
@@ -33,7 +33,7 @@ module.exports = {
         .insert(entry)
         .returning('id')
     },
-    /** update 
+    /** update - modify one database entry for one User
      * @param {number} uid - User ID, foreign key in Entries database table
      * @param {Object} body 
      * @returns {number} - Updated Entry ID
@@ -44,8 +44,8 @@ module.exports = {
         .update(body)
         .returning('id')
     },
-    /** delete 
-     * @param {number} uid - User ID, foreign key in Entries database table
+    /** delete - delete one database entry for one User
+     * @param {number} id - Entry ID
      * @returns {number} - Deleted Entry ID
     */
     delete: function(id) {
@@ -55,7 +55,7 @@ module.exports = {
         .returning('id')
     }
 }
-    /** transform forms entries from database objects by extracting day and month and parsing numbers
+    /** transform - form entries from database objects by extracting day and month and parsing numbers
      * @param {Array<Object>} entries - raw entries from database table
      * @returns {Array<Entry>} - entries of the formally defined type
     */
