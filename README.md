@@ -1,5 +1,5 @@
 ## Tempo
-
+Check out our [docs](https://nicholasgriffen.github.io/tempo-server/)
 ## install
 
 ```
