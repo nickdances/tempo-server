@@ -5,17 +5,20 @@ const knex = require('../knex')
 
 /** Object representing one user's data for one day
  *  @typedef {Object} Entry
-    @property {number} id 
     @property {boolean} flow - User report of menstruation
     @property {number} day
     @property {number} month 
     @property {number} temp - User Basal Body Temperature
  */
 
+ /**
+  * @typedef {Entry} EntryWithID
+  * @property {number} id - database generated Entry ID
+  */
 module.exports = {
     /** getAll - query database for all entries for one user
      * @param {number} uid - User ID, foreign key in Entries database table
-     * @returns {Array<Entry>}  
+     * @returns {Array<EntryWithID>} - {@link module:models/entries~EntryWithID|EntryWithID}
     */
     getAll: function(uid) {
         return knex('entries')
@@ -25,7 +28,7 @@ module.exports = {
     },
     /** create - create one database entry for one User
      * @param {number} uid - User ID, foreign key in Entries database table
-     * @param {Object} body 
+     * @param {Entry} body - {@link module:models/entries~Entry|Entry}
      * @returns {number}  - Created Entry ID
     */
     create: function(uid, body) {
@@ -36,7 +39,7 @@ module.exports = {
     },
     /** update - modify one database entry for one User
      * @param {number} id - Entry ID
-     * @param {Object} body 
+     * @param {Entry} body - {@link module:models/entries~Entry|Entry}
      * @returns {number} - Updated Entry ID
     */
     update: function(id, body) {
@@ -58,7 +61,7 @@ module.exports = {
 }
     /** transform - form entries from database objects by extracting day and month and parsing numbers
      * @param {Array<Object>} entries - raw entries from database table
-     * @returns {Array<Entry>} - entries of the formally defined 
+     * @returns {Array<EntryWithID>} - {@link module:models/entries~EntryWithID|EntryWithID}
      * @ignore
     */
 function transform(entries) {
