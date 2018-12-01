@@ -1,24 +1,24 @@
 {
-  "name": "shark-week",
+  "name": "tempo",
   "version": "0.5.0",
   "description": "Fertility awareness web app",
   "main": "index.js",
   "scripts": {
-    "test": "DATABASE_URL=postgres://localhost/shark-week_test mocha --exit",
+    "test": "DATABASE_URL=postgres://localhost/tempo-server-test mocha --exit",
     "start": "node index.js",
-    "dev": "NODE_ENV=development DATABASE_URL=postgres://localhost/shark-week_dev nodemon index.js"
+    "dev": "NODE_ENV=development node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicholasgriffen/shark-week.git"
+    "url": "git+https://github.com/nicholasgriffen/tempo-server.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nicholasgriffen/shark-week/issues"
+    "url": "https://github.com/nicholasgriffen/tempo-server/issues"
   },
-  "homepage": "https://github.com/nicholasgriffen/shark-week#readme",
+  "homepage": "https://github.com/nicholasgriffen/tempo-server#readme",
   "dependencies": {
     "bcrypt": "^3.0.2",
     "cors": "^2.8.4",
