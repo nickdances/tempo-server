@@ -18,5 +18,5 @@ createdb tempo-server-dev
 ## run
 
 ```
-NODE_ENV=development node index.js
+npm run dev // shorthand for NODE_ENV=development node index.js
 ```
