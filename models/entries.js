@@ -28,16 +28,11 @@ module.exports = {
 }
 
 function transform(entries) {
-    let transformed = []
-    for (let entry of entries) {
-        transformed.push({
-            id: +entry.id, 
-            flow: entry.flow,
-            day: +entry.date.getDate(),
-            month: entry.date.getMonth(),
-            temp: +entry.temp
-        })
-    }
-    
-    return transformed
-}
+    return entries.map(entry => ({
+            id:     +entry.id, 
+            flow:    entry.flow,
+            day:    +entry.date.getDate(),
+            month:  +entry.date.getMonth(),
+            temp:   +entry.temp
+     }))
+  }
