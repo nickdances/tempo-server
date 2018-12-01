@@ -58,7 +58,8 @@ module.exports = {
 }
     /** transform - form entries from database objects by extracting day and month and parsing numbers
      * @param {Array<Object>} entries - raw entries from database table
-     * @returns {Array<Entry>} - entries of the formally defined type
+     * @returns {Array<Entry>} - entries of the formally defined 
+     * @ignore
     */
 function transform(entries) {
     return entries.map(entry => ({

@@ -5,15 +5,19 @@ const knex = require('../knex')
 
 /**
  * @typedef {Object} User
- * @property {number} id
  * @property {string} name
  * @property {string} password - bcrypt hash 
  * @property {number} [cycle_length=28] - menstrual cycle length 
  */
+
+ /**
+  * @typedef {User} UserWithID
+  * @property {number} id - database generated User ID
+  */
 module.exports = {
     /** getOne - query database for one user 
      *  @param {string} email
-     *  @returns {Array<User>} 
+     *  @returns {Array<UserWithID>} - {@link module:models/users~UserWithID|UserWithID}
      */
     getOne: function(email) {
         return knex('users')
@@ -21,10 +25,7 @@ module.exports = {
         .where('email', email)
     },
     /** create - create one user in database
-     *  @param {Object} body
-     *  @param {string} body.name
-     *  @param {string} body.password - bcrypt hash 
-     *  @param {number} [body.cycle_length=28] - menstrual cycle length 
+     *  @param {User} body - {@link module:models/users~User|User}
      *  @returns {number} - User ID
      */
     create: function(body) {
@@ -34,10 +35,7 @@ module.exports = {
     },
     /** update - delete one user from database 
      *  @param {number} id - User ID
-     *  @param {Object} body
-     *  @param {string} body.name
-     *  @param {string} body.password - bcrypt hash 
-     *  @param {number} [body.cycle_length=28] - menstrual cycle length
+     *  @param {User} body - {@link module:models/users~User|User} 
      *  @returns {number} - Updated User ID 
      */
     update: function(id, body) {
