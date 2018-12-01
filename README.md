@@ -8,7 +8,7 @@ cd tempo-server
 npm install    
 ```
 
-## configure postgresql database
+## configure development postgresql database
 
 ```
 echo "DATABASE_URL=postgres://localhost/tempo-server-dev" >> .env
