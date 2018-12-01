@@ -11,6 +11,7 @@ const knex = require('../knex')
     @property {number} month 
     @property {number} temp - User Basal Body Temperature
  */
+
 module.exports = {
     /** getAll - query database for all entries for one user
      * @param {number} uid - User ID, foreign key in Entries database table
@@ -34,7 +35,7 @@ module.exports = {
         .returning('id')
     },
     /** update - modify one database entry for one User
-     * @param {number} uid - User ID, foreign key in Entries database table
+     * @param {number} id - Entry ID
      * @param {Object} body 
      * @returns {number} - Updated Entry ID
     */
