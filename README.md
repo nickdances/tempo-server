@@ -11,7 +11,7 @@ npm install
 ## configure postgresql database
 
 ```
-echo "DATABASE_URL=postgres://localhost/tempo-server-dev"
+echo "DATABASE_URL=postgres://localhost/tempo-server-dev" >> .env
 createdb tempo-server-dev
 ```
 
